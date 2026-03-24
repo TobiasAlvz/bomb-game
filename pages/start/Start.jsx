@@ -1,9 +1,14 @@
-import { View, Text } from 'react-native';
+import React from "react";
+import { Container } from "./styles";
+import { Logo } from "./styles";
 
 export default function Start() {
   return (
-    <View>
-      <Text>Minha tela Start 🚀</Text>
-    </View>
+    <Container>
+      <Logo
+        source={require("../../assets/logoDark.png")}
+        style={{ resizeMode: "contain" }}
+      />
+    </Container>
   );
 }
