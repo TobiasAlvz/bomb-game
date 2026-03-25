@@ -8,15 +8,17 @@ import {
   Title,
 } from "./styles";
 import { Alert } from "react-native";
+import { useNavigation } from "expo-router";
 
 export default function Rules() {
-    
-function handleNavToStart() {
-    Alert.alert("Ícone clicado");
-}
+  const navigation = useNavigation();
+
+  function handleNavToStart() {
+    navigation.navigate("Start");
+  }
   return (
     <Container>
-     <Icon name="arrow-back-ios" onPress={handleNavToStart} />
+      <Icon name="arrow-back-ios" onPress={handleNavToStart} />
       <ScrollTextRules>
         <Title>Jogando Solo</Title>
         <Paragraph>
@@ -38,8 +40,8 @@ function handleNavToStart() {
         </Paragraph>
         <Paragraph>
           <NumberParagraph>2 - </NumberParagraph>
-          Assim que ela preencher tudo ela deve clicar em iniciar e depois
-          disso vai ser iniciada a contagem. Se você errar, o celular vai vibrar
+          Assim que ela preencher tudo ela deve clicar em iniciar e depois disso
+          vai ser iniciada a contagem. Se você errar, o celular vai vibrar
           indicando o erro.
         </Paragraph>
         <Paragraph style={{ marginBottom: 20 }}>

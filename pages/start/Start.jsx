@@ -5,8 +5,10 @@ import { Title } from "./styles";
 import { SubTitle } from "./styles";
 import ButtonComponent from "../../components/buttons/index";
 import { Alert } from "react-native";
+import { useNavigation } from "expo-router";
 
 export default function Start() {
+  const navigation = useNavigation();
   function handleNavToPlayAlone() {
     Alert.alert("Botão clicado 1");
   }
@@ -16,7 +18,7 @@ export default function Start() {
   }
 
   function handleNavToRules() {
-    Alert.alert("Rules clicado!");
+    navigation.navigate("Rules");
   }
   return (
     <Container
@@ -41,10 +43,10 @@ export default function Start() {
         handlePress={handleNavToPlayTogether}
       />
       <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-        <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-          <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-            <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-              <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
     </Container>
   );
 }
