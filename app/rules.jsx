@@ -1,3 +1,5 @@
-import Rules from "../pages/rules";
+import Rules from "../pages/rules/index";
 
-export default Rules;
+export default function Page() {
+  return <Rules />;
+}

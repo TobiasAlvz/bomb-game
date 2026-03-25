@@ -7,48 +7,53 @@ import {
   ScrollTextRules,
   Title,
 } from "./styles";
-import { Alert } from "react-native";
-import { useNavigation, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 export default function Rules() {
-
   const router = useRouter();
 
   function handleNavToStart() {
     router.push("/");
   }
+
   return (
     <Container>
       <Icon name="arrow-back-ios" onPress={handleNavToStart} />
-      <ScrollTextRules>
+
+      <ScrollTextRules showsVerticalScrollIndicator={false}>
         <Title>Jogando Solo</Title>
+
         <Paragraph>
           <NumberParagraph>1 - </NumberParagraph>
           Você vai receber uma dica da senha, que será uma conta matemática,
-          tendo um tempo fixo de 5 minutos para resolver e desarmar a bomba
+          tendo um tempo fixo de 5 minutos para resolver e desarmar a bomba.
         </Paragraph>
+
         <Paragraph>
           <NumberParagraph>2 - </NumberParagraph>
           Toda vez que você errar, o seu aparelho vai vibrar e os campos de
           senha serão limpos. Se você acertar, será enviado para uma página de
           sucesso, se errar, será enviado para uma página de falha.
         </Paragraph>
-        <Title style={{ marginTop: 30 }}>Jogando Em Dupla</Title>
+
+        <Title style={{ marginTop: 30 }}>Jogando em Dupla</Title>
+
         <Paragraph>
           <NumberParagraph>1 - </NumberParagraph>
-          Para jogar esse jogo, precisa de um parceiro, a pessoa 01 vai colocar:
-          O tempo da bomba, uma dica de senha e a senha.
+          Para jogar esse jogo, precisa de um parceiro. A pessoa 01 vai definir:
+          o tempo da bomba, uma dica de senha e a senha.
         </Paragraph>
+
         <Paragraph>
           <NumberParagraph>2 - </NumberParagraph>
-          Assim que ela preencher tudo ela deve clicar em iniciar e depois disso
-          vai ser iniciada a contagem. Se você errar, o celular vai vibrar
-          indicando o erro.
+          Após preencher tudo, deve clicar em iniciar. A contagem começa e, se
+          errar, o celular vibra indicando o erro.
         </Paragraph>
+
         <Paragraph style={{ marginBottom: 20 }}>
           <NumberParagraph>3 - </NumberParagraph>
-          Se acertar vocề vai ser enviado para uma página de sucesso, se errar,
-          vai ser enviado para uma página de fracasso, terminando assim o jogo.
+          Se acertar, você será enviado para uma página de sucesso. Se errar,
+          será enviado para uma página de fracasso, encerrando o jogo.
         </Paragraph>
       </ScrollTextRules>
     </Container>
