@@ -1,25 +1,30 @@
 import React from "react";
-import { Container, Rules } from "./styles";
-import { Logo } from "./styles";
-import { Title } from "./styles";
-import { SubTitle } from "./styles";
-import ButtonComponent from "../../components/buttons/index";
+import {
+  Container,
+  Logo,
+  Title,
+  SubTitle,
+  Rules as RulesButton,
+} from "./styles";
+import ButtonComponent from "../../components/buttons";
 import { Alert } from "react-native";
-import { useNavigation } from "expo-router";
+import { useRouter } from "expo-router";
 
 export default function Start() {
-  const navigation = useNavigation();
+  const router = useRouter();
+
   function handleNavToPlayAlone() {
-    Alert.alert("Botão clicado 1");
+    Alert.alert("Modo solo");
   }
 
   function handleNavToPlayTogether() {
-    Alert.alert("Botão clicado 2");
+    Alert.alert("Modo dupla");
   }
 
   function handleNavToRules() {
-    navigation.navigate("Rules");
+    router.push("/rules");
   }
+
   return (
     <Container
       contentContainerStyle={{
@@ -32,21 +37,23 @@ export default function Start() {
         source={require("../../assets/logoDark.png")}
         style={{ resizeMode: "contain" }}
       />
+
       <Title>Bem-vindo ao {"\n"} Bomb game</Title>
       <SubTitle>Escolha um modo de jogo.</SubTitle>
+
       <ButtonComponent
         buttonText={"Jogar Solo"}
         handlePress={handleNavToPlayAlone}
       />
+
       <ButtonComponent
         buttonText={"Jogar Em Dupla"}
         handlePress={handleNavToPlayTogether}
       />
-      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
-      <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+
+      <RulesButton onPress={handleNavToRules}>
+        Ver as regras do jogo
+      </RulesButton>
     </Container>
   );
 }
