@@ -38,7 +38,7 @@ function handleNavToStart() {
         </Paragraph>
         <Paragraph>
           <NumberParagraph>2 - </NumberParagraph>
-          Assim que ela preencher tudo ela deve clicar em "iniciar" e depois
+          Assim que ela preencher tudo ela deve clicar em iniciar e depois
           disso vai ser iniciada a contagem. Se você errar, o celular vai vibrar
           indicando o erro.
         </Paragraph>
