@@ -8,13 +8,14 @@ import {
   Title,
 } from "./styles";
 import { Alert } from "react-native";
-import { useNavigation } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 
 export default function Rules() {
-  const navigation = useNavigation();
+
+  const router = useRouter();
 
   function handleNavToStart() {
-    navigation.navigate("Start");
+    router.push("/");
   }
   return (
     <Container>
