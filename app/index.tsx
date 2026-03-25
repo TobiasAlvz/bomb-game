@@ -8,6 +8,8 @@ import {
 } from "@expo-google-fonts/roboto";
 import { useCallback, useEffect } from "react";
 import { View } from "react-native";
+import { ThemeProvider } from "styled-components/native";
+import theme from "../global/styles/theme";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -15,12 +17,9 @@ export default function App() {
     Roboto_500Medium,
     Roboto_700Bold,
   });
-  useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
 
-    prepare();
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
   }, []);
 
   const onLayoutRootView = useCallback(async () => {
@@ -32,7 +31,12 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
-    <Start />
-  </View>;
+
+  return (
+    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <Start />
+      </ThemeProvider>
+    </View>
+  );
 }
