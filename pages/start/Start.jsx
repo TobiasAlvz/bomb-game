@@ -41,6 +41,10 @@ export default function Start() {
         handlePress={handleNavToPlayTogether}
       />
       <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+        <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+          <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+            <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
+              <Rules onPress={handleNavToRules}>Ver as regras do jogo</Rules>
     </Container>
   );
 }
