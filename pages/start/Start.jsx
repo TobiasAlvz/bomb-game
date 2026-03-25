@@ -19,7 +19,13 @@ export default function Start() {
     Alert.alert("Rules clicado!");
   }
   return (
-    <Container>
+    <Container
+      contentContainerStyle={{
+        alignItems: "center",
+        flexGrow: 1,
+        paddingBottom: 40,
+      }}
+    >
       <Logo
         source={require("../../assets/logoDark.png")}
         style={{ resizeMode: "contain" }}
