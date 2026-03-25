@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { useCallback, useEffect } from "react";
 import { View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import theme from "../global/styles/theme";
 
@@ -34,6 +35,7 @@ export default function App() {
 
   return (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+     <StatusBar style="light" />
       <ThemeProvider theme={theme}>
         <Start />
       </ThemeProvider>
