@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import { Container, Input, InputContainer } from "./style";
 
-export default function PasswordInput({ pin, setPin, started }) {
+export default function PasswordInput() {
   const input1 = useRef();
   const input2 = useRef();
   const input3 = useRef();
+
   return (
     <Container>
       <InputContainer>
@@ -32,7 +33,7 @@ export default function PasswordInput({ pin, setPin, started }) {
           keyboardType={"number-pad"}
           maxLength={1}
           ref={input3}
-          onChangeText={() => {
+          onChangeText={(value) => {
             Keyboard.dismiss();
           }}
         />
