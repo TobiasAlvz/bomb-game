@@ -1,5 +1,6 @@
 import { ImageBackground } from "expo-image";
 import bombImg from "../../../assets/bomba.png";
+import { Input, InputContainer, TextTimer, Timer } from "./style";
 
 export default function InputTimer() {
   return (
@@ -12,6 +13,35 @@ export default function InputTimer() {
         alignItems: "center",
         justifyContent: "center",
       }}
-    ></ImageBackground>
+    >
+      <Timer>
+        <InputContainer>
+          <Input
+            keyboardType={"number-pad"}
+            maxLength={2}
+            placeholder="00"
+            placeholderTextColor="#bbb"
+          />
+        </InputContainer>
+        <TextTimer>:</TextTimer>
+        <InputContainer>
+          <Input
+            keyboardType={"number-pad"}
+            maxLength={2}
+            placeholder="00"
+            placeholderTextColor="#bbb"
+          />
+        </InputContainer>
+        <TextTimer>:</TextTimer>
+        <InputContainer>
+          <Input
+            keyboardType={"number-pad"}
+            maxLength={2}
+            placeholder="00"
+            placeholderTextColor="#bbb"
+          />
+        </InputContainer>
+      </Timer>
+    </ImageBackground>
   );
 }
