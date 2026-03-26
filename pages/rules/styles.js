@@ -30,3 +30,14 @@ export const Paragraph = styled.Text`
   margin-top: ${RFValue(15)}px;
   color: ${({ theme }) => theme.colors.textLight};
 `;
+
+import { ScrollView } from "react-native";
+
+export const ScrollTextRules = styled(ScrollView)`
+  flex: 1;
+`;
+
+export const NumberParagraph = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.white};
+`;
