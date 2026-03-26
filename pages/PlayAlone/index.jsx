@@ -1,9 +1,27 @@
 import React from "react";
-import { Container, TextTimer, Timer, TipContainer, TipText, TipTitle, Title } from "./styles";
+import {
+  Container,
+  TextTimer,
+  Timer,
+  TipContainer,
+  TipText,
+  TipTitle,
+  Title,
+} from "./styles";
 import { ImageBackground } from "expo-image";
 import bombImg from "../../assets/bomba.png";
+import PasswordInput from "../../components/PasswordInput";
+import { Alert, Button } from "react-native";
+import { router } from "expo-router";
 
 export default function PlayAlone() {
+  function handleNavToStart() {
+    router.push("/");
+  }
+
+  function handleStartGame() {
+    Alert.alert("Jogo começou!");
+  }
   return (
     <Container>
       <Title>Bomb Game Solo</Title>
@@ -25,6 +43,10 @@ export default function PlayAlone() {
         <TipTitle>Sua dica:</TipTitle>
         <TipText>Dica vai estar aqui!</TipText>
       </TipContainer>
+      <PasswordInput />
+      <Button buttonText="Iniciar" handlePress={handleStartGame} />
+
+      <Button buttonText="Página Inicial" handlePress={handleNavToStart} />
     </Container>
   );
 }
