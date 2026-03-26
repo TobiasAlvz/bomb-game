@@ -41,3 +41,9 @@ export const TipText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.textLight};
 `;
+
+export const Button = styled.Text`
+  font-size: ${RFValue(16)}px;
+  color: #fff;
+  font-weight: bold;
+`;
