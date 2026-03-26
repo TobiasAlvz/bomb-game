@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, TextTimer, Timer, Title } from "./styles";
+import { Container, TextTimer, Timer, TipContainer, TipText, TipTitle, Title } from "./styles";
 import { ImageBackground } from "expo-image";
 import bombImg from "../../assets/bomba.png";
 
@@ -21,6 +21,10 @@ export default function PlayAlone() {
           <TextTimer> {"00 : 05 : 00"}</TextTimer>
         </Timer>
       </ImageBackground>
+      <TipContainer>
+        <TipTitle>Sua dica:</TipTitle>
+        <TipText>Dica vai estar aqui!</TipText>
+      </TipContainer>
     </Container>
   );
 }
