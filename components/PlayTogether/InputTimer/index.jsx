@@ -1,8 +1,12 @@
 import { ImageBackground } from "expo-image";
 import bombImg from "../../../assets/bomba.png";
 import { Input, InputContainer, TextTimer, Timer } from "./style";
+import { useRef } from "react";
 
 export default function InputTimer() {
+  const input1 = useRef();
+  const input2 = useRef();
+  const input3 = useRef();
   return (
     <ImageBackground
       source={bombImg}
