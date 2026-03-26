@@ -14,7 +14,7 @@ export default function Start() {
   const router = useRouter();
 
   function handleNavToPlayAlone() {
-    Alert.alert("Modo solo");
+  router.push("/playAlone");
   }
 
   function handleNavToPlayTogether() {
