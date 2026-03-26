@@ -44,9 +44,9 @@ export default function PlayAlone() {
         <TipText>Dica vai estar aqui!</TipText>
       </TipContainer>
       <PasswordInput />
-      <Button buttonText="Iniciar" handlePress={handleStartGame} />
+      <Button title="Iniciar" onPress={handleStartGame} />
 
-      <Button buttonText="Página Inicial" handlePress={handleNavToStart} />
+      <Button title="Página Inicial" onPress={handleNavToStart} />
     </Container>
   );
 }
