@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "pergunta": "Quanto é 145 + 278 - 132 * 2 + 90?",
+      "resp": "249"
+    },
+    {
+      "id": 2,
+      "pergunta": "Quanto é 999 - 456 + 123 - 321?",
+      "resp": "345"
+    },
+    {
+      "id": 3,
+      "pergunta": "Quanto é 420 + 180 - 300 / 3?",
+      "resp": "500"
+    },
+    {
+      "id": 4,
+      "pergunta": "Quanto é 5 * 3 * 4 * 2?",
+      "resp": "120"
+    },
+    {
+      "id": 5,
+      "pergunta": "Quanto é 88 + 912 - 400 + 50?",
+      "resp": "650"
+    },
+    {
+      "id": 6,
+      "pergunta": "Quanto é 720 - 240 * 2 + 100?",
+      "resp": "340"
+    },
+    {
+      "id": 7,
+      "pergunta": "Quanto é 300 + 600 - 450 / 5?",
+      "resp": "810"
+    },
+    {
+      "id": 8,
+      "pergunta": "Quanto é 12 * 3 * 2 + 48?",
+      "resp": "120"
+    },
+    {
+      "id": 9,
+      "pergunta": "Quanto é 1000 - 250 - 250 + 125?",
+      "resp": "625"
+    },
+    {
+      "id": 10,
+      "pergunta": "Quais são os 3 primeiros números de PI?",
+      "resp": "314"
+    }
+  ]
+}
