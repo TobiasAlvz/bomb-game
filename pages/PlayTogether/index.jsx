@@ -1,18 +1,18 @@
-import React from "react";
-import { Container, Title } from "./style";
-import InputTimer from "../../components/PlayTogether/InputTimer";
-import TipInput from "../../components/PlayTogether/TipInput";
-import PasswordInput from "../../components/PasswordInput";
-import { router } from "expo-router";
-import { Alert, Button } from "react-native";
+import React from 'react';
+import {Container, Title} from './style';
+import InputTimer from '../../components/PlayTogether/InputTimer';
+import TipInput from '../../components/PlayTogether/TipInput';
+import PasswordInput from '../../components/PasswordInput';
+import {router} from 'expo-router';
+import {Alert, Button} from 'react-native';
 
-export default function PlayTogether() {
-  function handleNavToStart() {
-    router.push("/");
+export default function PlayTogether () {
+  function handleNavToStart () {
+    router.push ('/');
   }
 
-  function handleStartGame() {
-    Alert.alert("Jogo começou!");
+  function handleStartGame () {
+    Alert.alert ('Jogo começou!');
   }
   return (
     <Container>
