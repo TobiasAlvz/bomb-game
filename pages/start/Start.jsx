@@ -1,63 +1,57 @@
-import React from "react";
-import {
-  Container,
-  Logo,
-  Title,
-  SubTitle,
-  Rules as RulesButton,
-} from "./styles";
-import ButtonComponent from "../../components/buttons";
-import { Alert } from "react-native";
-import { useRouter } from "expo-router";
+import React from 'react';
+import {Container, Logo, Title, SubTitle, Rules as RulesButton} from './styles';
+import ButtonComponent from '../../components/buttons';
+import {Alert} from 'react-native';
+import {useRouter} from 'expo-router';
 
-export default function Start() {
-  const router = useRouter();
+export default function Start () {
+  const router = useRouter ();
 
-  function handleNavToPlayAlone() {
-  router.push("/playAlone");
+  function handleNavToPlayAlone () {
+    router.push ('/playAlone');
   }
 
-  function handleNavToPlayTogether() {
-    Alert.alert("Modo dupla");
+  function handleNavToPlayTogether () {
+    router.push ('/playTogether');
   }
 
-  function handleNavToRules() {
-    router.push("/rules");
+  function handleNavToRules () {
+    router.push ('/rules');
   }
 
   return (
     <Container
       contentContainerStyle={{
-        alignItems: "center",
+        alignItems: 'center',
         flexGrow: 1,
         paddingBottom: 40,
       }}
     >
       <Logo
-        source={require("../../assets/logoDark.png")}
-        style={{ resizeMode: "contain" }}
+        source={require ('../../assets/logoDark.png')}
+        style={{resizeMode: 'contain'}}
       />
 
-      <Title>Bem-vindo ao {"\n"} Bomb game</Title>
+      <Title>Bem-vindo ao {'\n'} Bomb game</Title>
       <SubTitle>Escolha um modo de jogo.</SubTitle>
 
       <ButtonComponent
-        buttonText={"Jogar Solo"}
+        buttonText={'Jogar Solo'}
         handlePress={handleNavToPlayAlone}
       />
 
       <ButtonComponent
-        buttonText={"Jogar Em Dupla"}
+        buttonText={'Jogar Em Dupla'}
         handlePress={handleNavToPlayTogether}
       />
 
       <RulesButton onPress={handleNavToRules}>
         Ver as regras do jogo
       </RulesButton>
-       <RulesButton onPress={handleNavToRules}>
+      <RulesButton onPress={handleNavToRules}>
         Ver as regras do jogo
       </RulesButton>
-       <RulesButton onPress={handleNavToRules}>
+      <RulesButton onPress={handleNavToRules}>
         Ver as regras do jogo
       </RulesButton>
     </Container>
