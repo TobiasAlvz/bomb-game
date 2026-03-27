@@ -8,7 +8,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "jsonServer": "json-server ./services/api/server.json --host 172.16.72.170 --port 3000"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.4.3",
