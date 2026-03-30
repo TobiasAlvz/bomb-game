@@ -44,7 +44,12 @@ export default function PlayAlone () {
     return explodeTime.unix() - currentTime.unix();
   }
 
-  function startCountdown({ diffTime }) {
+  function startCountdown({diffTime}) {
+    // 🔥 evita múltiplos timers
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
     let duration = moment.duration(diffTime * 1000);
     const interval = 1000;
 
@@ -53,19 +58,24 @@ export default function PlayAlone () {
     const id = setInterval(() => {
       duration = moment.duration(duration.asMilliseconds() - interval);
 
-      const hoursDigits = duration.hours().toString().padStart(2, "0");
-      const minutesDigits = duration.minutes().toString().padStart(2, "0");
-      const secondsDigits = duration.seconds().toString().padStart(2, "0");
+      const hoursDigits = duration.hours().toString().padStart(2, '0');
+      const minutesDigits = duration.minutes().toString().padStart(2, '0');
+      const secondsDigits = duration.seconds().toString().padStart(2, '0');
 
       const timeEnded =
-        hoursDigits === "00" &&
-        minutesDigits === "00" &&
-        secondsDigits === "00";
+        hoursDigits === '00' &&
+        minutesDigits === '00' &&
+        secondsDigits === '00';
 
       if (timeEnded) {
         clearInterval(id);
-        setStarted(false);
-        router.push("/exploded"); // ✅ corrigido
+
+        console.log('💥 EXPLODIU');
+
+        // 🔥 IMPORTANTE: rota em minúsculo
+        router.push('/exploded');
+
+        return; // 🔥 impede execução contínua
       }
 
       setHours(hoursDigits);
@@ -76,37 +86,37 @@ export default function PlayAlone () {
     setIntervalId(id);
   }
 
-  function handleStartBomb() {
-    const diffTime = getDiffTime({ hours, seconds, minutes });
-    startCountdown({ diffTime });
+  function handleStartBomb () {
+    const diffTime = getDiffTime({hours, seconds, minutes});
+    startCountdown({diffTime});
   }
 
-  function handleStartGame() {
-    if (hours !== "00" || minutes !== "00" || seconds !== "00") {
+  function handleStartGame () {
+    if (hours !== '00' || minutes !== '00' || seconds !== '00') {
       setStarted(true);
     } else {
-      Alert.alert("Defina um tempo maior que zero!");
+      Alert.alert('Defina um tempo maior que zero!');
     }
   }
 
-  function handleDisarmBomb() {
-    if (pin.join("") === String(answer)) {
+  function handleDisarmBomb () {
+    if (pin.join('') === String(answer)) {
       clearInterval(intervalId);
       setStarted(false);
-      router.push("/disarmed"); // ✅ corrigido
+      router.push('/disarmed');
       return;
     }
 
-    setPin(["", "", ""]);
+    setPin(['', '', '']);
     Vibration.vibrate(1000);
   }
 
-  async function fetchQuestion() {
+  async function fetchQuestion () {
     try {
-      const { data } = await api.get("questions");
+      const {data} = await api.get('questions');
 
       if (!data || data.length === 0) {
-        setQuestion("Sem perguntas disponíveis");
+        setQuestion('Sem perguntas disponíveis');
         return;
       }
 
@@ -116,8 +126,8 @@ export default function PlayAlone () {
       setQuestion(randomQuestion.pergunta);
       setAnswer(String(randomQuestion.resp));
     } catch (error) {
-      console.log("ERRO API:", error.message);
-      setQuestion("Erro ao carregar pergunta");
+      console.log('ERRO API:', error.message);
+      setQuestion('Erro ao carregar pergunta');
     }
   }
 
@@ -155,7 +165,7 @@ export default function PlayAlone () {
       {started && (
         <TipContainer>
           <TipTitle>Sua dica:</TipTitle>
-          <TipText>{question || "Carregando..."}</TipText>
+          <TipText>{question || 'Carregando...'}</TipText>
         </TipContainer>
       )}
 
