@@ -16,7 +16,6 @@ import {router, useNavigation} from 'expo-router';
 import moment from 'moment';
 
 export default function PlayAlone () {
-  }
   const [started, setStarted] = useState (false);
   const [pin, setPin] = useState (['', '', '']);
   const [hours, setHours] = useState ('00');
