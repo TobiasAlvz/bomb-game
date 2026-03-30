@@ -14,65 +14,80 @@ import PasswordInput from '../../components/PasswordInput';
 import {Alert, Button} from 'react-native';
 import {router, useNavigation} from 'expo-router';
 import moment from 'moment';
-import BombService from '../../services/BombApp';
 
 export default function PlayAlone () {
-  function handleNavToStart () {
-    router.push ('/');
   }
-
-  function handleStartGame () {
-    Alert.alert ('Jogo começou!');
-  }
-  function handleStartBomb () {
-    const diffTime = BombService.getDiffTime ({hours, seconds, minutes});
-  }
-
   const [started, setStarted] = useState (false);
   const [pin, setPin] = useState (['', '', '']);
   const [hours, setHours] = useState ('00');
   const [minutes, setMinutes] = useState ('03');
   const [seconds, setSeconds] = useState ('00');
+  const [intervalId, setIntervalId] = useState (null);
 
+  const navigation = useNavigation ();
 
-  const navigation = useNavigation();
+  function handleNavToStart () {
+    router.push ('/');
+  }
+
+  function handleStartGame () {
+    handleStartBomb ();
+  }
 
   function getDiffTime({hours, minutes, seconds}) {
     const explodeTime = moment ();
 
-    let secondsMoment = seconds.length >= 1 ? seconds : 0;
-    let minutesMoment = minutes.length >= 1 ? minutes : 0;
-    let hoursMoment = hours.length >= 1 ? hours : 0;
-
     explodeTime
-      .add (secondsMoment, 'seconds')
-      .add (minutesMoment, 'minutes')
-      .add (hoursMoment, 'hours');
+      .add (Number (seconds), 'seconds')
+      .add (Number (minutes), 'minutes')
+      .add (Number (hours), 'hours');
 
     const currentTime = moment ();
 
     return explodeTime.unix () - currentTime.unix ();
   }
 
-  const [question, setQuestion] = useState ('');
-  const [answer, setAnswer] = useState ('');
-  const [intervalId, duration ] = useState ();
+  function handleStartBomb () {
+    const diffTime = getDiffTime ({hours, minutes, seconds});
 
+    startCountdown ({
+      diffTime,
+    });
+  }
 
+  function startCountdown({diffTime}) {
+    let duration = moment.duration (diffTime * 1000);
+    const interval = 1000;
 
-  startCountdown: ({
-    setSeconds,
-    setMinutes,
-    setHours,
-    setStarted,
-    diffTime,
-    setIntervalId,
-    intervalId,
-    navigation,
-  }) => {};
+    if (diffTime <= 0) return;
+
+    setStarted (true);
+
+    const id = setInterval (() => {
+      duration = moment.duration (duration.asSeconds () - 1, 'seconds');
+
+      const h = String (duration.hours ()).padStart (2, '0');
+      const m = String (duration.minutes ()).padStart (2, '0');
+      const s = String (duration.seconds ()).padStart (2, '0');
+
+      setHours (h);
+      setMinutes (m);
+      setSeconds (s);
+
+      if (duration.asSeconds () <= 0) {
+        clearInterval (id);
+        setStarted (false);
+        Alert.alert ('💥 BOOM! Tempo esgotado!');
+      }
+    }, interval);
+
+    setIntervalId (id);
+  }
+
   return (
     <Container>
       <Title>Bomb Game Solo</Title>
+
       <ImageBackground
         source={bombImg}
         resizeMode="cover"
@@ -84,14 +99,19 @@ export default function PlayAlone () {
         }}
       >
         <Timer>
-          <TextTimer> {'00 : 05 : 00'}</TextTimer>
+          <TextTimer>
+            {`${hours} : ${minutes} : ${seconds}`}
+          </TextTimer>
         </Timer>
       </ImageBackground>
+
       <TipContainer>
         <TipTitle>Sua dica:</TipTitle>
         <TipText>Dica vai estar aqui!</TipText>
       </TipContainer>
+
       <PasswordInput />
+
       <Button title="Iniciar" onPress={handleStartGame} />
 
       <Button title="Página Inicial" onPress={handleNavToStart} />
