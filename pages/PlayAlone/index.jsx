@@ -12,8 +12,9 @@ import {ImageBackground} from 'expo-image';
 import bombImg from '../../assets/bomba.png';
 import PasswordInput from '../../components/PasswordInput';
 import {Alert, Button} from 'react-native';
-import {router} from 'expo-router';
+import {router, useNavigation} from 'expo-router';
 import moment from 'moment';
+import BombService from '../../services/BombApp';
 
 export default function PlayAlone () {
   function handleNavToStart () {
@@ -23,9 +24,8 @@ export default function PlayAlone () {
   function handleStartGame () {
     Alert.alert ('Jogo começou!');
   }
-
   function handleStartBomb () {
-    const diffTime = null;
+    const diffTime = BombService.getDiffTime ({hours, seconds, minutes});
   }
 
   const [started, setStarted] = useState (false);
@@ -33,6 +33,9 @@ export default function PlayAlone () {
   const [hours, setHours] = useState ('00');
   const [minutes, setMinutes] = useState ('03');
   const [seconds, setSeconds] = useState ('00');
+
+
+  const navigation = useNavigation();
 
   function getDiffTime({hours, minutes, seconds}) {
     const explodeTime = moment ();
@@ -50,6 +53,23 @@ export default function PlayAlone () {
 
     return explodeTime.unix () - currentTime.unix ();
   }
+
+  const [question, setQuestion] = useState ('');
+  const [answer, setAnswer] = useState ('');
+  const [intervalId, duration ] = useState ();
+
+
+
+  startCountdown: ({
+    setSeconds,
+    setMinutes,
+    setHours,
+    setStarted,
+    diffTime,
+    setIntervalId,
+    intervalId,
+    navigation,
+  }) => {};
   return (
     <Container>
       <Title>Bomb Game Solo</Title>
