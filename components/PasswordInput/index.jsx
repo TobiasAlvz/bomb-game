@@ -1,40 +1,55 @@
-import React, { useRef } from "react";
-import { Container, Input, InputContainer } from "./style";
+import React, {useRef} from 'react';
+import {Keyboard} from 'react-native';
+import {Container, Input, InputContainer} from './style';
 
-export default function PasswordInput() {
-  const input1 = useRef();
-  const input2 = useRef();
-  const input3 = useRef();
+export default function PasswordInput({pin, setPin}) {
+  const input1 = useRef ();
+  const input2 = useRef ();
+  const input3 = useRef ();
+
+  function handleChange (value, index) {
+    const newPin = [...pin];
+    newPin[index] = value;
+    setPin (newPin);
+  }
 
   return (
     <Container>
       <InputContainer>
         <Input
-          keyboardType={"number-pad"}
+          keyboardType="number-pad"
           maxLength={1}
           ref={input1}
-          onChangeText={(value) => {
-            value && input2.current.focus();
+          value={pin[0]}
+          onChangeText={value => {
+            handleChange (value, 0);
+            if (value) input2.current.focus ();
           }}
         />
       </InputContainer>
+
       <InputContainer>
         <Input
-          keyboardType={"number-pad"}
+          keyboardType="number-pad"
           maxLength={1}
           ref={input2}
-          onChangeText={(value) => {
-            value && input3.current.focus();
+          value={pin[1]}
+          onChangeText={value => {
+            handleChange (value, 1);
+            if (value) input3.current.focus ();
           }}
         />
       </InputContainer>
+
       <InputContainer>
         <Input
-          keyboardType={"number-pad"}
+          keyboardType="number-pad"
           maxLength={1}
           ref={input3}
-          onChangeText={(value) => {
-            Keyboard.dismiss();
+          value={pin[2]}
+          onChangeText={value => {
+            handleChange (value, 2);
+            if (value) Keyboard.dismiss ();
           }}
         />
       </InputContainer>
