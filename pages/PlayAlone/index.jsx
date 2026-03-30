@@ -63,7 +63,8 @@ export default function PlayAlone () {
     setStarted (true);
 
     const id = setInterval (() => {
-      duration = moment.duration (duration.asSeconds () - 1, 'seconds');
+    
+      duration = moment.duration (duration.asMilliseconds () - interval);
 
       const h = String (duration.hours ()).padStart (2, '0');
       const m = String (duration.minutes ()).padStart (2, '0');
@@ -73,7 +74,7 @@ export default function PlayAlone () {
       setMinutes (m);
       setSeconds (s);
 
-      if (duration.asSeconds () <= 0) {
+      if (duration.asMilliseconds () <= 0) {
         clearInterval (id);
         setStarted (false);
         Alert.alert ('💥 BOOM! Tempo esgotado!');
@@ -82,7 +83,6 @@ export default function PlayAlone () {
 
     setIntervalId (id);
   }
-
   return (
     <Container>
       <Title>Bomb Game Solo</Title>
