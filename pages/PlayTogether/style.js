@@ -14,3 +14,11 @@ export const Title = styled.Text`
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
 `;
+
+export const BombMessage = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  text-align: center;
+  color: ${({ theme }) => theme.colors.error || 'red'};
+  margin: 10px;
+`;
