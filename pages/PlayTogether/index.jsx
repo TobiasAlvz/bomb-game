@@ -1,29 +1,87 @@
-import React from 'react';
-import {Container, Title} from './style';
-import InputTimer from '../../components/PlayTogether/InputTimer';
-import TipInput from '../../components/PlayTogether/TipInput';
+import React, {useState} from 'react';
+import {Container, Title, BombMessage} from './style';
+
 import PasswordInput from '../../components/PasswordInput';
-import {router} from 'expo-router';
-import {Alert, Button} from 'react-native';
+import TipInput from '../../components/PlayTogether/TipInput';
+import Button from '../../components/buttons';
+
+import BombService from '../../services/BombApp';
 
 export default function PlayTogether () {
-  function handleNavToStart () {
-    router.push ('/');
+  const [pin, setPin] = useState (['', '', '']);
+  const [started, setStarted] = useState (false);
+  const [hours, setHours] = useState ('');
+  const [minutes, setMinutes] = useState ('');
+  const [seconds, setSeconds] = useState ('');
+  const [message, setMessage] = useState ('');
+  const [question, setQuestion] = useState ('');
+  const [answer, setAnswer] = useState ('');
+  const [intervalId, setIntervalId] = useState (null);
+
+  // 🔥 START CONTAGEM
+  function handleStartBomb () {
+    const diffTime = BombService.getDiffTime ({hours, seconds, minutes});
+
+    BombService.startCountdown ({
+      setSeconds,
+      setMinutes,
+      setHours,
+      setStarted,
+      diffTime,
+      setIntervalId,
+      intervalId,
+    });
   }
 
+  // 🚀 INICIAR JOGO
   function handleStartGame () {
-    Alert.alert ('Jogo começou!');
+    BombService.bombActivationTogether ({
+      question,
+      pin,
+      hours,
+      minutes,
+      seconds,
+      setMessage,
+      setStarted,
+      setPin,
+      handleStartBomb,
+      setAnswer,
+    });
   }
+
+  // 🔐 DESARMAR
+  function handleDisarmBomb () {
+    BombService.bombDisarmTogether ({
+      pin,
+      answer,
+      setStarted,
+      intervalId,
+      setPin,
+      setAnswer,
+    });
+  }
+
   return (
     <Container>
-      <Title>Bomb Game Dupla</Title>
-      <InputTimer />
-      {/* <BombMessage>Mensagem temporária de erro</BombMessage> */}
-      <TipInput />
-      <PasswordInput />
-      <Button title="Iniciar" onPress={handleStartGame} />
+      <Title>Modo Multiplayer</Title>
 
-      <Button title="Página Inicial" onPress={handleNavToStart} />
+      {/* 🔥 MENSAGEM DE ERRO */}
+      {message ? <BombMessage>{message}</BombMessage> : null}
+
+      {/* 🧠 INPUT DA DICA */}
+      <TipInput
+        started={started}
+        question={question}
+        setQuestion={setQuestion}
+      />
+
+      {/* 🔐 PIN */}
+      <PasswordInput pin={pin} setPin={setPin} />
+
+      {/* 🔘 BOTÕES */}
+      {!started
+        ? <Button buttonText="Iniciar" handlePress={handleStartGame} />
+        : <Button buttonText="Desarmar" handlePress={handleDisarmBomb} />}
     </Container>
   );
 }
