@@ -1,13 +1,10 @@
-import React from "react";
-import { Button, ButtonContent } from "./styles";
-import { Text } from "react-native";
+import React from 'react';
+import {Button, ButtonContent} from './styles';
 
-export default function ButtonComponent({ buttonText, handlePress }) {
+export default function ButtonComponent({buttonText, handlePress}) {
   return (
     <Button activeOpacity={0.95} onPress={handlePress}>
-      <Text>
-        <ButtonContent>{buttonText}</ButtonContent>
-      </Text>
+      <ButtonContent>{buttonText}</ButtonContent>
     </Button>
   );
 }
