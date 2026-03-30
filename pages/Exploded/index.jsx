@@ -4,7 +4,7 @@ import failedImg from '../../assets/bomba_explodiu.png';
 import {Vibration} from 'react-native';
 import {router} from 'expo-router';
 import {useEffect} from 'react';
-import Button from '../../components/Button';
+import Button from '../../components/buttons';
 
 export default function Exploded () {
   function handleNavToStart () {
