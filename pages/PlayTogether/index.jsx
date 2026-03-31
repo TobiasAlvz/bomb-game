@@ -1,98 +1,87 @@
-import { ImageBackground } from "expo-image";
-import bombImg from "../../assets/bomba.png";
-import { Input, InputContainer, TextTimer, Timer } from "./style";
-import { useRef } from "react";
-import { Keyboard } from "react-native";
+import React, {useState} from 'react';
+import {Container, Title, BombMessage} from './style';
 
-export default function InputTimer({ 
-  hours, 
-  minutes, 
-  seconds, 
-  setHours, 
-  setMinutes, 
-  setSeconds,
-  started 
-}) {
-  const input1 = useRef(null);
-  const input2 = useRef(null);
-  const input3 = useRef(null);
+import PasswordInput from '../../components/PasswordInput';
+import TipInput from '../../components/PlayTogether/TipInput';
+import Button from '../../components/buttons';
 
-  const hoursInput = (value) => {
-    setHours(value);
-  };
-  
-  const minutesInput = (value) => {
-    setMinutes(value);
-  };
-  
-  const secondsInput = (value) => {
-    setSeconds(value);
-  };
+import BombService from '../../services/BombApp';
+
+export default function PlayTogether () {
+  const [pin, setPin] = useState (['', '', '']);
+  const [started, setStarted] = useState (false);
+  const [hours, setHours] = useState ('');
+  const [minutes, setMinutes] = useState ('');
+  const [seconds, setSeconds] = useState ('');
+  const [message, setMessage] = useState ('');
+  const [question, setQuestion] = useState ('');
+  const [answer, setAnswer] = useState ('');
+  const [intervalId, setIntervalId] = useState (null);
+
+  // 🔥 START CONTAGEM
+  function handleStartBomb () {
+    const diffTime = BombService.getDiffTime ({hours, seconds, minutes});
+
+    BombService.startCountdown ({
+      setSeconds,
+      setMinutes,
+      setHours,
+      setStarted,
+      diffTime,
+      setIntervalId,
+      intervalId,
+    });
+  }
+
+  // 🚀 INICIAR JOGO
+  function handleStartGame () {
+    BombService.bombActivationTogether ({
+      question,
+      pin,
+      hours,
+      minutes,
+      seconds,
+      setMessage,
+      setStarted,
+      setPin,
+      handleStartBomb,
+      setAnswer,
+    });
+  }
+
+  // 🔐 DESARMAR
+  function handleDisarmBomb () {
+    BombService.bombDisarmTogether ({
+      pin,
+      answer,
+      setStarted,
+      intervalId,
+      setPin,
+      setAnswer,
+    });
+  }
 
   return (
-    <ImageBackground
-      source={bombImg}
-      contentFit="cover"
-      style={{
-        marginTop: 50,
-        minHeight: 130,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Timer>
-        <InputContainer>
-          <Input
-            keyboardType="number-pad"
-            maxLength={2}
-            placeholder="00"
-            placeholderTextColor="#bbb"
-            ref={input1}
-            value={hours}
-            editable={!started}
-            onChangeText={(value) => {
-              if (value.length > 1) input2.current?.focus();
-              hoursInput(value);
-            }}
-          />
-        </InputContainer>
+    <Container>
+      <Title>Modo Multiplayer</Title>
 
-        <TextTimer>:</TextTimer>
+      {/* 🔥 MENSAGEM DE ERRO */}
+      {message ? <BombMessage>{message}</BombMessage> : null}
 
-        <InputContainer>
-          <Input
-            keyboardType="number-pad"
-            maxLength={2}
-            placeholder="00"
-            placeholderTextColor="#bbb"
-            ref={input2}
-            value={minutes}
-            editable={!started}
-            onChangeText={(value) => {
-              if (value.length > 1) input3.current?.focus();
-              minutesInput(value);
-            }}
-          />
-        </InputContainer>
+      {/* 🧠 INPUT DA DICA */}
+      <TipInput
+        started={started}
+        question={question}
+        setQuestion={setQuestion}
+      />
 
-        <TextTimer>:</TextTimer>
+      {/* 🔐 PIN */}
+      <PasswordInput pin={pin} setPin={setPin} />
 
-        <InputContainer>
-          <Input
-            keyboardType="number-pad"
-            maxLength={2}
-            placeholder="00"
-            placeholderTextColor="#bbb"
-            ref={input3}
-            value={seconds}
-            editable={!started}
-            onChangeText={(value) => {
-              if (value.length > 1) Keyboard.dismiss();
-              secondsInput(value);
-            }}
-          />
-        </InputContainer>
-      </Timer>
-    </ImageBackground>
+      {/* 🔘 BOTÕES */}
+      {!started
+        ? <Button buttonText="Iniciar" handlePress={handleStartGame} />
+        : <Button buttonText="Desarmar" handlePress={handleDisarmBomb} />}
+    </Container>
   );
 }
