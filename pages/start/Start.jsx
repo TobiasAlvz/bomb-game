@@ -51,9 +51,7 @@ export default function Start () {
       <RulesButton onPress={handleNavToRules}>
         Ver as regras do jogo
       </RulesButton>
-      <RulesButton onPress={handleNavToRules}>
-        Ver as regras do jogo
-      </RulesButton>
+
     </Container>
   );
 }
