@@ -6,6 +6,7 @@ import TipInput from '../../components/PlayTogether/TipInput';
 import Button from '../../components/buttons';
 
 import BombService from '../../services/BombApp';
+import InputTimer from '../../components/PlayTogether/InputTimer';
 
 export default function PlayTogether () {
   const [pin, setPin] = useState (['', '', '']);
@@ -73,6 +74,16 @@ export default function PlayTogether () {
         started={started}
         question={question}
         setQuestion={setQuestion}
+      />
+
+      <InputTimer
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+        setHours={setHours}
+        setMinutes={setMinutes}
+        setSeconds={setSeconds}
+        started={started}
       />
 
       {/* 🔐 PIN */}
