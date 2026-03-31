@@ -1,27 +1,26 @@
 import styled from "styled-components/native";
-import { RFValue } from "react-native-responsive-fontsize";
 
 export const Timer = styled.View`
-  margin-bottom: ${RFValue(25)}px;
-  margin-right: ${RFValue(15)}px;
   flex-direction: row;
-`;
-
-export const TextTimer = styled.Text`
-  font-size: ${RFValue(20)}px;
-  font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.white};
-  margin: 0px ${RFValue(5)}px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const InputContainer = styled.View`
-  justify-content: center;
-  align-items: center;
+  margin: 0 5px;
 `;
 
 export const Input = styled.TextInput`
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.white};
+  background-color: #fff;
+  width: 60px;
+  height: 60px;
   text-align: center;
-  width: 100%;
+  font-size: 24px;
+  border-radius: 8px;
+`;
+
+export const TextTimer = styled.Text`
+  font-size: 32px;
+  color: #fff;
+  font-weight: bold;
 `;
