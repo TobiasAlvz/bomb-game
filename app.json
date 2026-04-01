@@ -3,34 +3,31 @@
     "name": "Bomb Game",
     "slug": "bomb-game",
     "version": "1.0.0",
-
     "orientation": "portrait",
-
-    "icon": "./src/assets/icon.png",
-
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#0f0f1a"
     },
-
-    "assetBundlePatterns": ["*/"],
-
-    "userInterfaceStyle": "automatic",
-
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.seubomb.bombgame"
     },
-
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/icon.png",
-        "backgroundColor": "#000000"
-      }
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f0f1a"
+      },
+      "package": "com.seubomb.bombgame"
     },
-
     "web": {
-      "favicon": "./src/assets/icon.png"
-    }
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "bombgame"
   }
 }
