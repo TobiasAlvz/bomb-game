@@ -109,6 +109,7 @@ export default function PlayAlone() {
 
     setPin(['', '', '']);
     Vibration.vibrate(1000);
+    Alert.alert('Código errado!', 'A bomba vai explodir!');
   }
 
   async function fetchQuestion() {
