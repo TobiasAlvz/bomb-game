@@ -1,4 +1,4 @@
-import { ImageBackground } from "react-native"; // ← MUDE PARA react-native
+import { ImageBackground } from "react-native";
 import bombImg from "../../../assets/bomba.png";
 import { Input, InputContainer, TextTimer, Timer } from "./style";
 import { useRef } from "react";
@@ -79,7 +79,7 @@ export default function InputTimer({
             }}
           />
         </InputContainer>
-      </Timer>
+      </Timer> 
     </ImageBackground>
   );
 }
