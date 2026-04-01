@@ -23,7 +23,6 @@ import {ImageBackground} from 'expo-image';
 import bombImg from '../../assets/bomba.png';
 import PasswordInput from '../../components/PasswordInput';
 import TipInput from '../../components/PlayTogether/TipInput';
-import InputTimer from '../../components/PlayTogether/InputTimer';
 import {router} from 'expo-router';
 import BombService from '../../services/BombApp';
 
@@ -113,37 +112,30 @@ export default function PlayTogether () {
 
         {message ? <ErrorMessage>{message}</ErrorMessage> : null}
 
-        {started &&
-          <TipContainer>
-            <TipTitle>💡 DICA DO DESARMAMENTO</TipTitle>
-            <TipText>{question || 'Aguardando dica...'}</TipText>
-          </TipContainer>}
-
         <TipInput
           started={started}
           question={question}
           setQuestion={setQuestion}
         />
 
-        <InputTimer
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-          setHours={setHours}
-          setMinutes={setMinutes}
-          setSeconds={setSeconds}
-          started={started}
-        />
-
         <PasswordInput pin={pin} setPin={setPin} />
 
-        {!started
-          ? <ActionButton onPress={handleStartGame} activeOpacity={0.8}>
-              <ButtonText>INICIAR MISSÃO</ButtonText>
-            </ActionButton>
-          : <ActionButton danger onPress={handleDisarmBomb} activeOpacity={0.8}>
-              <ButtonText>DESARMAR BOMBA</ButtonText>
-            </ActionButton>}
+        {started && (
+          <TipContainer>
+            <TipTitle>💡 DICA RECEBIDA</TipTitle>
+            <TipText>{question || 'Aguardando dica...'}</TipText>
+          </TipContainer>
+        )}
+
+        {!started ? (
+          <ActionButton onPress={handleStartGame} activeOpacity={0.8}>
+            <ButtonText>INICIAR MISSÃO</ButtonText>
+          </ActionButton>
+        ) : (
+          <ActionButton danger onPress={handleDisarmBomb} activeOpacity={0.8}>
+            <ButtonText>DESARMAR BOMBA</ButtonText>
+          </ActionButton>
+        )}
 
         <SecondaryButton onPress={handleNavToStart} activeOpacity={0.7}>
           <SecondaryButtonText>VOLTAR PARA INÍCIO</SecondaryButtonText>
