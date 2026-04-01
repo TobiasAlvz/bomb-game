@@ -57,31 +57,29 @@ export const BombWrapper = styled.View`
 
 export const Timer = styled.View`
   background-color: rgba(0, 0, 0, 0.75);
-  padding: 20px 32px;
+  padding: 16px 32px;
   border-radius: 60px;
   align-items: center;
   border-width: 1px;
   border-color: rgba(255, 140, 66, 0.3);
-  min-width: 260px;
 `;
 
 export const TimerLabel = styled.Text`
-  font-size: ${RFValue(11)}px;
+  font-size: ${RFValue(10)}px;
   color: #ff8c42;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `;
 
 export const TimerText = styled.Text`
-  font-size: ${RFValue(48)}px;
+  font-size: ${RFValue(42)}px;
   font-weight: bold;
   color: #ff8c42;
   font-family: monospace;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   text-shadow: 0px 0px 15px rgba(255, 140, 66, 0.8);
 `;
-
 export const TipContainer = styled.View`
   background-color: #1a1a2a;
   border-radius: 24px;
