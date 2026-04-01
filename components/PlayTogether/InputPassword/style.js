@@ -2,26 +2,29 @@ import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  margin: ${RFValue(50)}px ${RFValue(30)}px;
+  margin: 24px 0;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
+  gap: 16px;
 `;
 
 export const InputContainer = styled.View`
-  border: ${RFValue(1)}px solid white;
-  border-radius: ${RFValue(5)}px;
+  background-color: #1e293b;
+  border-radius: 16px;
   justify-content: center;
   align-items: center;
+  border-width: 2px;
+  border-color: #334155;
+  width: 70px;
+  height: 70px;
 `;
 
 export const Input = styled.TextInput`
-  font-size: ${RFValue(30)}px;
-  padding: ${RFValue(10)}px;
-  color: ${({ theme }) => theme.colors.white};
+  font-size: ${RFValue(32)}px;
+  color: #ff8c42;
   text-align: center;
-  border-radius: ${RFValue(5)}px;
   width: 100%;
-  background-color: ${(props) =>
-    props.abled === false ? "#9999998c" : "transparent"};
-`;    
+  height: 100%;
+  font-weight: bold;
+`;
