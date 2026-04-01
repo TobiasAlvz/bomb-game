@@ -2,30 +2,28 @@ import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
-  margin: 0 ${RFValue(45)}px;
+  margin-bottom: 24px;
 `;
 
 export const TipTitle = styled.Text`
-  font-size: ${RFValue(24)}px;
-  font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.white};
-  text-decoration-line: underline;
+  font-size: ${RFValue(14)}px;
+  font-weight: bold;
+  color: #ff8c42;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
 `;
 
 export const InputContainer = styled.View`
-  width: ${RFValue(260)}px;
-  height: ${RFValue(30)}px;
-  border: ${RFValue(1)}px solid white;
-  border-radius: ${RFValue(5)}px;
-  justify-content: center;
-  align-items: center;
+  background-color: #1e293b;
+  border-radius: 16px;
+  padding: 4px 16px;
+  border-width: 1px;
+  border-color: #334155;
 `;
 
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: "white",
-})`
-  width: 90%;
-  font-size: ${RFValue(12)}px;
-  color: white;
-  font-family: ${({ theme }) => theme.fonts.regular};
+export const Input = styled.TextInput`
+  font-size: ${RFValue(16)}px;
+  color: #e2e8f0;
+  padding: 14px 0;
+  font-weight: 500;
 `;
