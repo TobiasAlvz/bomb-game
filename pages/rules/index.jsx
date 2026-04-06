@@ -21,7 +21,7 @@ export default function Rules() {
       <Icon name="arrow-back-ios" onPress={handleNavToStart} />
 
       <ScrollTextRules showsVerticalScrollIndicator={false}>
-        <Title>Jogando Solo</Title>
+        <Title>🎮 Jogando Solo</Title>
 
         <Paragraph>
           <NumberParagraph>1 - </NumberParagraph>
@@ -33,10 +33,10 @@ export default function Rules() {
           <NumberParagraph>2 - </NumberParagraph>
           Toda vez que você errar, o seu aparelho vai vibrar e os campos de
           senha serão limpos. Se você acertar, será enviado para uma página de
-          sucesso, se errar, será enviado para uma página de falha.
+          sucesso, se o tempo acabar, será enviado para uma página de falha.
         </Paragraph>
 
-        <Title style={{ marginTop: 30 }}>Jogando em Dupla</Title>
+        <Title style={{ marginTop: 30 }}>👥 Jogando em Dupla</Title>
 
         <Paragraph>
           <NumberParagraph>1 - </NumberParagraph>
@@ -50,10 +50,10 @@ export default function Rules() {
           errar, o celular vibra indicando o erro.
         </Paragraph>
 
-        <Paragraph style={{ marginBottom: 20 }}>
+        <Paragraph style={{ marginBottom: 40 }}>
           <NumberParagraph>3 - </NumberParagraph>
-          Se acertar, você será enviado para uma página de sucesso. Se errar,
-          será enviado para uma página de fracasso, encerrando o jogo.
+          Se acertar, você será enviado para uma página de sucesso. Se errar ou
+          o tempo acabar, será enviado para uma página de fracasso, encerrando o jogo.
         </Paragraph>
       </ScrollTextRules>
     </Container>
