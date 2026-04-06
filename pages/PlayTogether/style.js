@@ -1,17 +1,17 @@
 import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { LinearGradient } from 'expo-linear-gradient';
+import {RFValue} from 'react-native-responsive-fontsize';
+import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import {LinearGradient} from 'expo-linear-gradient';
 
 export const Container = styled.View`
   flex: 1;
   background-color: #0f0f1a;
 `;
 
-export const Decoration = styled(LinearGradient).attrs({
+export const Decoration = styled (LinearGradient).attrs ({
   colors: ['#ff8c42', '#ff6b6b'],
-  start: { x: 0, y: 0 },
-  end: { x: 1, y: 1 },
+  start: {x: 0, y: 0},
+  end: {x: 1, y: 1},
 })`
   position: absolute;
   top: -50%;
@@ -24,7 +24,7 @@ export const Decoration = styled(LinearGradient).attrs({
 
 export const Content = styled.ScrollView`
   flex: 1;
-  padding: ${getStatusBarHeight() + RFValue(30)}px 24px 40px;
+  padding: ${getStatusBarHeight () + RFValue (30)}px 24px 40px;
 `;
 
 export const Header = styled.View`
@@ -33,7 +33,7 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: ${RFValue(36)}px;
+  font-size: ${RFValue (36)}px;
   font-weight: 800;
   color: #ffffff;
   text-align: center;
@@ -57,28 +57,27 @@ export const BombWrapper = styled.View`
 
 export const Timer = styled.View`
   background-color: rgba(0, 0, 0, 0.75);
-  padding: 20px 32px;
+  padding: 16px 32px;
   border-radius: 60px;
   align-items: center;
   border-width: 1px;
   border-color: rgba(255, 140, 66, 0.3);
-  min-width: 260px;
 `;
 
 export const TimerLabel = styled.Text`
-  font-size: ${RFValue(11)}px;
+  font-size: ${RFValue (10)}px;
   color: #ff8c42;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `;
 
 export const TimerText = styled.Text`
-  font-size: ${RFValue(48)}px;
+  font-size: ${RFValue (42)}px;
   font-weight: bold;
   color: #ff8c42;
   font-family: monospace;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   text-shadow: 0px 0px 15px rgba(255, 140, 66, 0.8);
 `;
 
@@ -94,7 +93,7 @@ export const TipContainer = styled.View`
 `;
 
 export const TipTitle = styled.Text`
-  font-size: ${RFValue(12)}px;
+  font-size: ${RFValue (12)}px;
   font-weight: bold;
   color: #ff8c42;
   margin-bottom: 12px;
@@ -102,14 +101,14 @@ export const TipTitle = styled.Text`
 `;
 
 export const TipText = styled.Text`
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue (16)}px;
   color: #e2e8f0;
   line-height: 26px;
   font-weight: 500;
 `;
 
 export const ActionButton = styled.TouchableOpacity`
-  background-color: ${props => props.danger ? '#dc2626' : '#ff8c42'};
+  background-color: ${props => (props.danger ? '#dc2626' : '#ff8c42')};
   padding: 18px;
   border-radius: 20px;
   align-items: center;
@@ -120,7 +119,7 @@ export const ActionButton = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   color: #ffffff;
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue (16)}px;
   font-weight: bold;
   letter-spacing: 1px;
 `;
@@ -132,13 +131,13 @@ export const SecondaryButton = styled.TouchableOpacity`
 
 export const SecondaryButtonText = styled.Text`
   color: #6b6b8a;
-  font-size: ${RFValue(13)}px;
+  font-size: ${RFValue (13)}px;
   font-weight: 500;
 `;
 
 export const ErrorMessage = styled.Text`
   color: #dc2626;
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue (14)}px;
   text-align: center;
   margin-bottom: 16px;
   font-weight: bold;
